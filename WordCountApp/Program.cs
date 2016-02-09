@@ -25,7 +25,7 @@ namespace WordCountApp
             }
 
             IWordCounter wc = new WordCounter();
-            WordCounterDic actResult = null;
+            Dictionary<string, uint> actResult = null;
             if (wc.TryCalculate(sentence, out actResult))
             {
                 foreach (KeyValuePair<string, uint> item in actResult)
@@ -36,7 +36,7 @@ namespace WordCountApp
             }
             else
             {
-                Console.WriteLine("'{0}' is not a valid sentece.", sentence);
+                Console.WriteLine("'{0}' is not a valid sentence.", sentence);
                 return -1;
             }            
         }

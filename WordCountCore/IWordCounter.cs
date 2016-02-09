@@ -3,12 +3,9 @@ using System.Collections.Generic;
 
 namespace WordCounterCore
 {
-    public class WordCounterDic : Dictionary<string, uint> { }
-
-
     public interface IWordCounter
     {
-        WordCounterDic Calculate(string input);
-        bool TryCalculate(string input, out WordCounterDic result);
+        Dictionary<string, uint> Calculate(string input);
+        bool TryCalculate(string input, out Dictionary<string, uint> result);
     }
 }

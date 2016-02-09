@@ -1,6 +1,7 @@
 ﻿using System;
 using WordCounterCore;
 using NUnit.Framework;
+using System.Collections.Generic;
 
 namespace UnitTests
 {
@@ -18,8 +19,8 @@ namespace UnitTests
 
         static object[] staticDataPositive =
         {
-            new object[] { "Yes!", new WordCounterDic() { { "yes", 1 } } },
-            new object[] { "This is a statement, and so is this.", new WordCounterDic() {
+            new object[] { "Yes!", new Dictionary<string, uint>() { { "yes", 1 } } },
+            new object[] { "This is a statement, and so is this.", new Dictionary<string, uint>() {
                 { "this", 2 },
                 { "is", 2 },
                 { "a", 1 },
@@ -27,7 +28,7 @@ namespace UnitTests
                 { "and", 1 },
                 { "so", 1 }
                 } },
-            new object[] { "Ok! ok 1   R2D2 \nBuy-buy", new WordCounterDic() {
+            new object[] { "Ok! ok 1   R2D2 \nBuy-buy", new Dictionary<string, uint>() {
                 { "ok", 2},                
                 { "1", 1},
                 { "r2d2", 1},
@@ -42,31 +43,57 @@ namespace UnitTests
             new object[] { " . , :! !? ? ! : ;", null}            
         };
 
-        [Test, TestCaseSource("staticDataPositive")]
-        public void Calculate(string sentence, WordCounterDic expResult)
+        [Test, 
+         TestCaseSource("staticDataPositive"),
+         Description ("Check that Calculate method works correct with proper sentence.")]
+        public void Calculate(string sentence, Dictionary<string, uint> expResult)
         {            
-            WordCounterDic actResult = wc.Calculate(sentence);            
+            Dictionary<string, uint> actResult = wc.Calculate(sentence);            
             CollectionAssert.AreEquivalent(expResult, actResult, "Expexted and Actual Result dictionary are not match for sentence:\n" + sentence);            
         }
+        
+        [Test,
+         TestCaseSource("staticDataNegative"),
+         Description("Check that Calculate method throws ArgumentException, when in-proper sentence are passed.")]
+        public void CalculateThrowException(string sentence, Dictionary<string, uint> expResult)
+        {            
+            Assert.Throws<ArgumentException> (() => wc.Calculate(sentence), "Calculate should throw exception [ArgumentException] when colling with inproper strings. Sentence:\n" + sentence);
+        }
 
-        [Test, TestCaseSource("staticDataNegative")]
-        public void TryCalculateIsFalse(string sentence, WordCounterDic expResult)
+
+        [Test,
+         TestCaseSource("staticDataNegative"),
+         Description("Check that TryCalculate method return false, when in-proper sentence are passed.")]
+        public void TryCalculateIsFalse(string sentence, Dictionary<string, uint> expResult)
         {
-            WordCounterDic actResult = null;
+            Dictionary<string, uint> actResult = null;
             Assert.IsFalse(wc.TryCalculate(sentence, out actResult), "TryCalculate should fail with sentence:\n" + sentence);
         }
 
-        [Test, TestCaseSource("staticDataPositive")]
-        public void TryCalculateIsTrue(string sentence, WordCounterDic expResult)
+        [Test,
+         TestCaseSource("staticDataPositive"),
+         Description("Check that TryCalculate method return true, when proper sentence are passed.")]
+        public void TryCalculateIsTrue(string sentence, Dictionary<string, uint> expResult)
         {
-            WordCounterDic actResult = null;
+            Dictionary<string, uint> actResult = null;
             Assert.IsTrue(wc.TryCalculate(sentence, out actResult), "TryCalculate should pass with sentence:\n" + sentence);            
         }
 
-        [Test, TestCaseSource("staticDataPositive")]
-        public void TryCalculate(string sentence, WordCounterDic expResult)
+        [Test,
+         TestCaseSource("staticDataNegative"),
+         Description("Check that TryCalculate method doesn't throw exception, when in-proper sentence are passed.")]
+        public void TryCalculateNoException(string sentence, Dictionary<string, uint> expResult)
         {
-            WordCounterDic actResult = null;
+            Dictionary<string, uint> actResult = null;            
+            Assert.DoesNotThrow(() => wc.TryCalculate(sentence, out actResult), "TryCalculate should be exception safe method. Sentence:\n" + sentence);
+        }
+
+        [Test,
+         TestCaseSource("staticDataPositive"),
+         Description("Check that TryCalculate method works correct with proper sentence.")]
+        public void TryCalculate(string sentence, Dictionary<string, uint> expResult)
+        {
+            Dictionary<string, uint> actResult = null;
             wc.TryCalculate(sentence, out actResult);
             CollectionAssert.AreEquivalent(expResult, actResult, "Expexted and Actual Result dictionary are not match for sentence:\n" + sentence);
 
