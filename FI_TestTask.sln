@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordCountCore", "WordCountCore\WordCountCore.csproj", "{01C74271-AAF0-4B82-8CD7-EE1985422D62}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{F3B07663-7FC7-4942-9DBD-93C817B9B25D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordCountApp", "WordCountApp\WordCountApp.csproj", "{9BC7C553-6CE6-46E4-96A7-CE150E055F20}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordCountCore", "WordCountCore\WordCountCore.csproj", "{01C74271-AAF0-4B82-8CD7-EE1985422D62}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{01C74271-AAF0-4B82-8CD7-EE1985422D62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{01C74271-AAF0-4B82-8CD7-EE1985422D62}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{01C74271-AAF0-4B82-8CD7-EE1985422D62}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{01C74271-AAF0-4B82-8CD7-EE1985422D62}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F3B07663-7FC7-4942-9DBD-93C817B9B25D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F3B07663-7FC7-4942-9DBD-93C817B9B25D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3B07663-7FC7-4942-9DBD-93C817B9B25D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -27,6 +23,10 @@ Global
 		{9BC7C553-6CE6-46E4-96A7-CE150E055F20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9BC7C553-6CE6-46E4-96A7-CE150E055F20}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9BC7C553-6CE6-46E4-96A7-CE150E055F20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01C74271-AAF0-4B82-8CD7-EE1985422D62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01C74271-AAF0-4B82-8CD7-EE1985422D62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01C74271-AAF0-4B82-8CD7-EE1985422D62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01C74271-AAF0-4B82-8CD7-EE1985422D62}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -31,8 +31,7 @@ namespace WordCountApp
                 foreach (KeyValuePair<string, uint> item in actResult)
                 {
                     Console.WriteLine("{0} - {1}", item.Key, item.Value);
-                }
-
+                }                                
                 return 0;
             }
             else

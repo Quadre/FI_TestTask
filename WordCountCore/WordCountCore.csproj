@@ -7,8 +7,8 @@
     <ProjectGuid>{01C74271-AAF0-4B82-8CD7-EE1985422D62}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FI_TestTask</RootNamespace>
-    <AssemblyName>FI_TestTask</AssemblyName>
+    <RootNamespace>WordCountCore</RootNamespace>
+    <AssemblyName>WordCountCore</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -33,6 +33,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IWordCounter.cs" />

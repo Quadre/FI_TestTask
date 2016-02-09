@@ -18,6 +18,7 @@ namespace UnitTests
 
         static object[] staticDataPositive =
         {
+            new object[] { "Yes!", new WordCounterDic() { { "yes", 1 } } },
             new object[] { "This is a statement, and so is this.", new WordCounterDic() {
                 { "this", 2 },
                 { "is", 2 },
@@ -26,12 +27,11 @@ namespace UnitTests
                 { "and", 1 },
                 { "so", 1 }
                 } },
-            new object[] { "Ok! No 1   R2D2 \nBuy-buy", new WordCounterDic() {
-                { "Ok", 1},
-                { "No", 1},
+            new object[] { "Ok! ok 1   R2D2 \nBuy-buy", new WordCounterDic() {
+                { "ok", 2},                
                 { "1", 1},
-                { "R2D2", 1},
-                { "Buy-buy", 1},
+                { "r2d2", 1},
+                { "buy-buy", 1},
                 } },            
         };
 
@@ -39,7 +39,7 @@ namespace UnitTests
         {
             new object[] { "", null},
             new object[] { " ... ", null},
-            new object[] { " . , :! !? ? !", null}            
+            new object[] { " . , :! !? ? ! : ;", null}            
         };
 
         [Test, TestCaseSource("staticDataPositive")]
@@ -60,15 +60,14 @@ namespace UnitTests
         public void TryCalculateIsTrue(string sentence, WordCounterDic expResult)
         {
             WordCounterDic actResult = null;
-            Assert.IsTrue(wc.TryCalculate(sentence, out actResult), "TryCalculate should pass with sentence:\n" + sentence);
-            CollectionAssert.AreEquivalent(expResult, actResult, "Expexted and Actual Result dictionary are not match for sentence:\n" + sentence);
-
+            Assert.IsTrue(wc.TryCalculate(sentence, out actResult), "TryCalculate should pass with sentence:\n" + sentence);            
         }
 
         [Test, TestCaseSource("staticDataPositive")]
         public void TryCalculate(string sentence, WordCounterDic expResult)
         {
-            WordCounterDic actResult = null;            
+            WordCounterDic actResult = null;
+            wc.TryCalculate(sentence, out actResult);
             CollectionAssert.AreEquivalent(expResult, actResult, "Expexted and Actual Result dictionary are not match for sentence:\n" + sentence);
 
         }
